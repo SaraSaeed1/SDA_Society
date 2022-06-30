@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}	
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.rtl.min.css" integrity="sha384-dc2NSrAXbAkjrdm9IYrX10fQq9SDG6Vjz7nQVKdKcJl3pC+k37e7qJR5MVSCS+wR" crossorigin="anonymous">
+    <title>SDA Society</title>
+    <style>.btn-secondary {
+        color: #fff;
+        background-color: #563d7c;
+        border-color: #563d7c;
+    }</style>
+</head>
+<body style="background-color: rgba(195, 197, 195, 0.211);">
+    <!-- ========== Start Navbar ========== -->
+    <div class="navbar sticky-top navbar navbar-expand-xs navbar-dark navbar-rounded shadow p-2 px-4 " style="background: #181149;">
+        <div class="d-flex row " style="align-items:center;">
+            <img class="col-4" src="{% static '/logo-removebg-preview.png' %}" width="90" alt="" >
+            <h1 class="col-4 text-light" style="font-family:cairo;">Society</h1>
+        </div>
+        <div class="col-4">
+            <ul class="nav">
+                <li class="nav-item col-4">
+                    <a class="nav-link active text-light" href="home_student">Home</a>
+                </li>
+                <li class="nav-item col-">
+                    <a class="nav-link text-light" href="profile">{{student.fname}}'s Profile</a>
+                </li>
+            </ul> 
+        </div>
+        <div>
+            <a href="logout" class="btn btn-outline-light btn-sm">Logout</a>
+        </div>
+    </div>
+    <!-- ========== End Navbar ========== -->
+
+
+    <!-- ========== Add Project  ========== -->
+    <div class="container d-flex  justify-content-center p-4">
+        
+        <div class="col-md-6 my-4 mt-4">
+            <h4 class="text-center">Add Project</h4>
+            <form  action="/new_project" method="post">
+                {% csrf_token %}
+                <div class="row g-3 ">
+                    <div class="md-3">
+                        <label class="form-label"> Title:</label>
+                        <input name="title" type="text" class="form-control" >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description:</label>
+                        <textarea name="desc" type="text" class="form-control" ></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">URL:</label>
+                        <input name="url" type="text" class="form-control" >
+                    </div>
+                    <div class=" d-flex justify-content-between">
+                        <a href="/profile" class="btn btn-danger ">Cancel</a>
+                        <button type="submit" class="btn btn-secondary ">Add Project</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
